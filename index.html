@@ -148,6 +148,7 @@
   }
   .tab-btn:hover { color: #c0b0e0; border-bottom-color: rgba(91,58,120,0.4); }
   .tab-btn.active { color: #f0e8f8; border-bottom-color: var(--gold); background: rgba(184,136,42,0.06); }
+.tab-nav-wrap { overflow: visible; } .tab-btn { pointer-events: auto; }
   .tab-btn .tab-new {
     position: absolute;
     top: 6px; right: 4px;
@@ -1654,7 +1655,6 @@
 </div><!-- t-synth -->
 
 <script>
-  // Robust tab switching with event delegation
   function showTab(tabId) {
     document.querySelectorAll('.tab-panel').forEach(function(el) {
       el.classList.remove('active');
@@ -1666,18 +1666,21 @@
       btn.classList.remove('active');
       if (btn.getAttribute('data-tab') === tabId) {
         btn.classList.add('active');
+        // Scroll the active button into view within the tab nav
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Event delegation on nav container — catches clicks even if child spans intercept
-  document.getElementById('mainTabNav').addEventListener('click', function(e) {
-    var btn = e.target.closest('.tab-btn');
-    if (!btn) return;
-    var tabId = btn.getAttribute('data-tab');
-    if (tabId) showTab(tabId);
+  // Attach individual listeners to every button (not delegation)
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var tabId = this.getAttribute('data-tab');
+      if (tabId) showTab(tabId);
+    });
   });
 </script>
 </body>
