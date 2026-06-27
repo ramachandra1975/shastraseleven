@@ -126,11 +126,10 @@
   }
   .tab-nav {
     display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 1rem;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    padding: 0.4rem 1rem;
   }
-  .tab-nav::-webkit-scrollbar { display: none; }
   .tab-btn {
     flex-shrink: 0;
     background: none;
@@ -443,6 +442,7 @@
     .section-header { grid-template-columns: 1fr; }
     .section-num-block { display: inline-block; width: auto; }
     .module-grid { grid-template-columns: 1fr 1fr; }
+    .tab-btn { font-size: 0.66rem; padding: 0.65rem 0.7rem; }
   }
 </style>
 </head>
@@ -1000,7 +1000,7 @@
       <div class="research-card t-card">
         <span class="rc-label">Catastrophic Forgetting</span>
         <div class="rc-title">Tamas vs. Rajas in Fine-Tuning</div>
-        <div class="rc-body">Catastrophic forgetting — the tendency of neural networks to lose performance on previously learned tasks when fine-tuned on new data — is a direct consequence of the conflict between tamas and rajas in the parameter space. The tamasic stability of pretrained weights is overwritten by the rajasic force of new gradient updates when the fine-tuning learning rate is too high or the fine-tuning dataset too small. The result is tamas losing to rajas: the prior encoding (old knowledge) is destroyed by the generative force of new optimization (new learning).</td>
+        <div class="rc-body">Catastrophic forgetting — the tendency of neural networks to lose performance on previously learned tasks when fine-tuned on new data — is a direct consequence of the conflict between tamas and rajas in the parameter space. The tamasic stability of pretrained weights is overwritten by the rajasic force of new gradient updates when the fine-tuning learning rate is too high or the fine-tuning dataset too small. The result is tamas losing to rajas: the prior encoding (old knowledge) is destroyed by the generative force of new optimization (new learning).</div>
         <div class="rc-implication">Techniques like Elastic Weight Consolidation (EWC) and LoRA fine-tuning are guṇa-balancing methods: they constrain the rajasic force of new optimization to preserve the tamasic encoding of prior knowledge — achieving a stable guṇa-balance between old and new rather than allowing rajas to overwhelm tamas.</div>
       </div>
       <div class="research-card t-card">
