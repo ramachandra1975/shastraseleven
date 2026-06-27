@@ -148,7 +148,7 @@
   }
   .tab-btn:hover { color: #c0b0e0; border-bottom-color: rgba(91,58,120,0.4); }
   .tab-btn.active { color: #f0e8f8; border-bottom-color: var(--gold); background: rgba(184,136,42,0.06); }
-.tab-nav-wrap { overflow: visible; } .tab-btn { pointer-events: auto; }
+
   .tab-btn .tab-new {
     position: absolute;
     top: 6px; right: 4px;
@@ -516,28 +516,28 @@
     <a class="module-card current" href="#">
       <em>§§ I–II</em>Prologue, Foundations & The Guṇa Ontology
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-sattva');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-sattva');return false;">
       <em>§ III</em>Sattva: Clarity, Accuracy & the Illuminating Function
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-rajas');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-rajas');return false;">
       <em>§ IV</em>Rajas: Drive, Hallucination & Generative Energy
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-tamas');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-tamas');return false;">
       <em>§ V</em>Tamas: Inertia, Bias & the Frozen Parameter
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-interplay');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-interplay');return false;">
       <em>§ VI</em>Guṇa Interplay Across the AI Architecture Stack
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-neuro');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-neuro');return false;">
       <em>§ VII</em>Neurochemical Parallels: The Biological Guṇas
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-models');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-models');return false;">
       <em>§ VIII</em>Model-by-Model Guṇa Analysis
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-ethics');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-ethics');return false;">
       <em>§ IX</em>Guṇa-Informed AI Ethics & Design
     </a>
-    <a class="module-card" href="#" onclick="showTab('t-synth');return false;">
+    <a class="module-card" href="javascript:void(0)" onclick="showTab('t-synth');return false;">
       <em>§ X</em>Final Synthesis: The Machine as Prakṛtic Configuration
     </a>
   </div>
@@ -1654,34 +1654,6 @@
 </div>
 </div><!-- t-synth -->
 
-<script>
-  function showTab(tabId) {
-    document.querySelectorAll('.tab-panel').forEach(function(el) {
-      el.classList.remove('active');
-    });
-    var t = document.getElementById(tabId);
-    if (t) t.classList.add('active');
-
-    document.querySelectorAll('.tab-btn').forEach(function(btn) {
-      btn.classList.remove('active');
-      if (btn.getAttribute('data-tab') === tabId) {
-        btn.classList.add('active');
-        // Scroll the active button into view within the tab nav
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Attach individual listeners to every button (not delegation)
-  document.querySelectorAll('.tab-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var tabId = this.getAttribute('data-tab');
-      if (tabId) showTab(tabId);
-    });
-  });
-</script>
+<script> function showTab(tabId) { document.querySelectorAll('.tab-panel').forEach(function(el) { el.classList.remove('active'); }); var t = document.getElementById(tabId); if (t) t.classList.add('active'); document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); if (btn.getAttribute('data-tab') === tabId) { btn.classList.add('active'); btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } }); window.scrollTo(0, 0); } document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); showTab(this.getAttribute('data-tab')); }); }); </script>
 </body>
 </html>
